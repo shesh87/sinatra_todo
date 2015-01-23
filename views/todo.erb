@@ -1,18 +1,19 @@
 <head>
 <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 <style>
-	h1 {color: orange; font-family: 'Lobster Two', cursive;}
+	h1 {color: red; font-family: 'Lobster Two', cursive; font-size: 100px;}
 	p {font-family: arial;}
+	a {text-decoration: none;}
 </style>
 </head>
 
 
-<h1>My To Do List</h1>
-<p>Task 1: <%= @task %>
-</p>
+<div style="margin: 250px auto 0; text-align: center; ">
+	<h1>To Do List</h1>
 
+	<form action="/added" method="POST">
+		<input type="text" name="task" placeholder="Add Task">
+		<input type="submit" value="Add Item">
+	</form>
 
-<!-- <form action="/adding" method="POST" enctype="multipart/form-data">
-	<input type="text" name="task">
-	<input name="commit" type="submit" value="Add Task">
-</form> -->
+</div>

@@ -2,24 +2,36 @@ require "sinatra"
 require "pry"
 require "sinatra/reloader" if development?
 require "logger"
+require "pp"
 enable :logger
+enable :logger
+enable :sessions
+set :session_secret, "super secret"
 
-def add_task
-	
+
+
+
+todos = []
+
+def print_task(todos)
+	todos.each do |task|
+		@stuff = task
+	end
 end
 
-get "/todo-list" do
+# @time = Time.now
 
-	task.add_task("buy food")
-	# @task = "dog"
-	# @task = "buy food"
+get "/" do
 	erb :todo
 end
 
-post "/adding" do
-	redirect to("/added-task")
+post "/added" do
+	todos << params[:task]
+	# time = Time.now
+	redirect to("/tasks")
 end
 
-get "/added-task" do
-	"You're added #{params[:task]} to your To Do list."
+get "/tasks" do
+	@tasks = todos
+	erb :tasks
 end
