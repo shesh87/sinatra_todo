@@ -5,19 +5,28 @@
 	p, li {font-family: arial; text-align: left; font-size: 18px; line-height: 25px;}
 	a {text-decoration: none;}
 	li {list-style-type: none;}
+	#trash {color: red; margin: 0 0 0 25px;}
 </style>
 </head>
 
 
-<div style="margin: 250px auto 0; text-align: center; ">
+<div style="margin: 100px auto 0; text-align: center; ">
 	<h1>To Do List</h1>
 
 	<div style="width: 300px; margin: 0 auto;">
 		<ul>
-			<% @tasks.each do |todo| %>	<!-- this creates a new li for each in the array -->
-				<li><a href="http://google.com"><%= todo %></a></li>
+			<% @tasks.each do |key, value| %>	<!-- this creates a new li for item each in the array -->
+				<li id="task-item" onclick="done()"><%= key %> @ <%=value%> <span id="trash">Delete?<span></li>
 			<% end %>
 
 		</ul>
 	</div>
 </div>
+
+
+
+<script>
+function done() {
+	document.getElementById("task-item").style.textDecoration = "line-through";
+};
+</script>

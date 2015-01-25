@@ -1,14 +1,16 @@
 <head>
 <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 <style>
-	h1 {color: red; font-family: 'Lobster Two', cursive; font-size: 100px;}
-	p {font-family: arial;}
+	h1 {color: red; font-family: 'Lobster Two', cursive; font-size: 100px; margin: 0 0 40px;}
+	p, li {font-family: arial; text-align: left; font-size: 18px; line-height: 25px; list-style-type: none;}
 	a {text-decoration: none;}
+	#trash {color: red; margin: 0 0 0 25px;}
+	form {margin-bottom: 40px;}
 </style>
 </head>
 
 
-<div style="margin: 250px auto 0; text-align: center; ">
+<div style="margin: 100px auto 0; text-align: center; ">
 	<h1>To Do List</h1>
 
 	<form action="/added" method="POST">
@@ -16,4 +18,28 @@
 		<input type="submit" value="Add Item">
 	</form>
 
+
+
+
+
+	<div style="width: 300px; margin: 0 auto;">
+		<ul>
+			<% @tasks.each do |key, value| %>	<!-- this creates a new li for each in the array -->
+				<li><span id="task-item" onclick="done()"><%= key %> @ <%=value%></span><span id="trash" onclick="d()">Delete<span></li>
+			<% end %>
+
+		</ul>
+	</div>
 </div>
+
+
+
+<script>
+function done() {
+	document.getElementById("task-item").style.textDecoration = "line-through";
+};
+function d() {
+	document.getElementById("trash").style.display = "none";
+	document.getElementById("task-item").style.display = "none";
+}
+</script>

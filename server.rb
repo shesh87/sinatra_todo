@@ -10,8 +10,8 @@ set :session_secret, "super secret"
 
 
 
-
-todos = []
+todos = {}
+# todos = []
 
 def print_task(todos)
 	todos.each do |task|
@@ -22,13 +22,15 @@ end
 # @time = Time.now
 
 get "/" do
+	@tasks = todos
 	erb :todo
 end
 
 post "/added" do
-	todos << params[:task]
-	# time = Time.now
-	redirect to("/tasks")
+	t = Time.now
+	todos[params[:task]] = t.strftime("%l:%M%P")
+	# todos << params[:task]
+	redirect to("/")
 end
 
 get "/tasks" do
