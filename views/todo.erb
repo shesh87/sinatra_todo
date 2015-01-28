@@ -10,7 +10,7 @@
 </head>
 
 
-<div style="margin: 100px auto 0; text-align: center; ">
+<div style="margin: 30px auto 0; text-align: center; ">
 	<h1>To Do List</h1>
 
 	<form action="/added" method="POST">
@@ -25,7 +25,11 @@
 	<div style="width: 300px; margin: 0 auto;">
 		<ul>
 			<% @tasks.each do |key, value| %>	<!-- this creates a new li for each in the array -->
-				<li><span id="task-item" onclick="done()"><%= key %> @ <%=value%></span><span id="trash" onclick="d()">Delete<span></li>
+				<li class="item-<%= key %>">	<!-- each li class name based on 'key' variable -->
+					<span class="task-item" onclick="done('<%= key %>')"><%= key %> @ <%=value%></span>
+					<span class="trash" onclick="d('<%= key %>')">Delete<span>
+					<!-- creating a specific done or delete function w/'key' variable parameter -->
+				</li>
 			<% end %>
 
 		</ul>
@@ -35,11 +39,26 @@
 
 
 <script>
-function done() {
-	document.getElementById("task-item").style.textDecoration = "line-through";
+function done(key) {
+	document.querySelectorAll('li.item-' + key + ' span.task-item').item(0).style.textDecoration = "line-through";		//selecting li-class & span-class 
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', encodeURI('/save/' + doneness), true);
+	xhr.send();
 };
-function d() {
-	document.getElementById("trash").style.display = "none";
-	document.getElementById("task-item").style.display = "none";
+function d(key) {
+	document.querySelectorAll('li.item-' + key).item(0).style.display = "none";
+	//selecting li-class & span-class
+	var xhr = new XMLHttpRequest();		//creates JS server request object instance
+	xhr.open('POST', encodeURI('/delete/' + key), true); //POST to defined url location + 'key' variable
+	xhr.send();		//sends POST request to the server
 }
+
+
 </script>
+
+
+
+
+
+
+

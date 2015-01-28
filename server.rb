@@ -11,15 +11,20 @@ set :session_secret, "super secret"
 
 
 todos = {}
-# todos = []
 
-def print_task(todos)
-	todos.each do |task|
-		@stuff = task
-	end
+ #task.new('buy milk')
+ #task.complete?
+
+class Task
+	
 end
 
-# @time = Time.now
+def delete_task(array, item)
+	array.delete(item)
+end
+
+
+
 
 get "/" do
 	@tasks = todos
@@ -29,11 +34,21 @@ end
 post "/added" do
 	t = Time.now
 	todos[params[:task]] = t.strftime("%l:%M%P")
-	# todos << params[:task]
 	redirect to("/")
 end
 
-get "/tasks" do
-	@tasks = todos
-	erb :tasks
+post "/save/:doneness" do
+	todos[params[:doneness]] = value
+	status(200)
+	"Success"
+	redirect to("/")
 end
+
+post "/delete/:key" do #can only get params from form names and url
+	delete_task(todos, params[:key])
+	status(200)
+	"Success"
+end
+
+
+
