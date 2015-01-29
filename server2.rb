@@ -14,7 +14,7 @@ set :session_secret, "super secret"
  #task.new('buy milk')
  #task.complete?
  class Task
- 	attr_reader :task
+ 	attr_reader :task, :time
 	def initialize(task)
 		@task = task
 		t = Time.now
@@ -46,15 +46,13 @@ get "/" do
 	store.transaction do
         @list = store[:list]
     end
+    p @list
 	erb :todo2
 end
 
 post "/added" do
 	cat = Task.new(params[:task])
-	# store[params[:task]] = new_item
 	store.transaction do
-		store["item"] = cat
-		
 		store[:list].push(cat)
 	end
 	redirect to("/")

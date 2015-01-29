@@ -26,9 +26,9 @@
 
 	<div style="width: 300px; margin: 0 auto;">
 		<ul>
-			<% @list.each do |key, value| %>	<!-- this creates a new li for each in the array -->
+			<% @list.each_with_index do |task, key| %>	<!-- this creates a new li for each in the array -->
 				<li class="item-<%= key %>">	<!-- each li class name based on 'key' variable -->
-					<span class="task-item" onclick="done('<%= key %>')"><%= key %> @ <%=value%></span>
+					<span class="task-item" onclick="done('<%= key %>')"><%= task.task %> @ <%= task.time %></span>
 					<!-- <span class="trash" onclick="d('<%= key %>')">Delete<span> -->
 					<button class="trash" onclick="d('<%= key %>')">Delete</button>
 					<!-- creating a specific done or delete function w/'key' variable parameter -->
