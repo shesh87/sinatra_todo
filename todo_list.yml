@@ -1,0 +1,39 @@
+---
+:list:
+- milk
+- &1 !ruby/object:Task
+  task: milk
+  time: " 4:43pm"
+- !ruby/object:Task
+  task: sauce
+  time: " 4:45pm"
+- !ruby/object:Task
+  task: cheese
+  time: " 4:47pm"
+- 9
+- !ruby/object:Task
+  task: cheese
+  time: " 5:14pm"
+- !ruby/object:Task
+  task: cat
+  time: " 5:15pm"
+- !ruby/object:Task
+  task: cheese
+  time: " 5:16pm"
+- !ruby/object:Task
+  task: ch
+  time: " 5:17pm"
+- !ruby/object:Task
+  task: cat food
+  time: " 5:17pm"
+- !ruby/object:Task
+  task: cat food
+  time: " 5:18pm"
+- &2 !ruby/object:Task
+  task: cat food
+  time: " 5:21pm"
+milk: *1
+cheese: !ruby/object:Task
+  task: cheese
+  time: " 4:43pm"
+item: *2
