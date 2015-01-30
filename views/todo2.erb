@@ -4,9 +4,10 @@
 <style>
 	h1 {color: red; font-family: 'Lobster Two', cursive; font-size: 100px; margin: 0 0 40px;}
 	p, li {font-family: arial; text-align: left; font-size: 18px; line-height: 25px; list-style-type: none;}
-	.complete {text-decoration: line-through;}
+	.complete {text-decoration: line-through; color: red;}
+	.done {display: none;}
 	a {text-decoration: none;}
-	#trash {color: red; margin: 0 0 0 25px;}
+	.btn-trash {color: red; margin: 0 0 0 25px;}
 	form {margin-bottom: 40px;}
 </style>
 </head>
@@ -26,12 +27,12 @@
 
 	<div style="width: 300px; margin: 0 auto;">
 		<ul>
-			<% @list.each_with_index do |task, key| %>	<!-- this creates a new li for each in the array -->
-				<li class="item-<%= key %>">	<!-- each li class name based on 'key' variable -->
-					<span class="task-item" onclick="done('<%= key %>')"><%= task.task %> @ <%= task.time %></span>
-					<!-- <span class="trash" onclick="d('<%= key %>')">Delete<span> -->
-					<button class="trash" onclick="d('<%= key %>')">Delete</button>
-					<!-- creating a specific done or delete function w/'key' variable parameter -->
+			<% @list.each_with_index do |task, index| %>	<!-- this creates a new li for each in the array -->
+				<li class="item-<%= task.task %>">	<!-- each li class name based on 'index' variable -->
+					<span class="task-item-<%= task.task %>" onclick="complete(<%= task %>)"><%= task.task %> @ <%= task.time %></span>
+					<!-- <span class="trash" onclick="d('<%= index %>')">Delete<span> -->
+					<button class="btn-trash" onclick="trash(<%= task.time %>)">Delete</button>
+					<!-- creating a specific done or delete function w/'index' variable parameter -->
 				</li>
 			<% end %>
 
@@ -41,28 +42,23 @@
 
 
 
+<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
 <script>
-function done(key) {
-	document.querySelectorAll('li.item-' + key + ' span.task-item').item(0).style.textDecoration = "line-through";		//selecting li-class & span-class 
-	var xhr = new XMLHttpRequest();
-	// xhr.open('POST', encodeURI('/save/' + key), true);
-	xhr.send();
-};
-function d(key) {
-	document.querySelectorAll('li.item-' + key).item(0).style.display = "none";
-	//selecting li-class & span-class
-	var xhr = new XMLHttpRequest();		//creates JS server request object instance
-	xhr.open('POST', encodeURI('/delete/' + key), true); //POST to defined url location + 'key' variable
-	xhr.send();		//sends POST request to the server
+function complete (task) {
+	$('span.task-item-' + task).addClass('complete');
+}
+
+function trash (task) {
+	// alert("helo");
+	$('li.item-' + task).addClass('done');
+	$.post("/delete/" + task);
+		// request.done(function (index) {
+		// 	console.log("Got someting", index);
+		// });
 }
 
 
 </script>
-<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
-<!-- <script type="text/javascript" src="jQuery.js"></script> -->
-
-</body>
-</html>
 
 
 

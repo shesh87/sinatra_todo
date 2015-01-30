@@ -46,7 +46,6 @@ get "/" do
 	store.transaction do
         @list = store[:list]
     end
-    p @list
 	erb :todo2
 end
 
@@ -58,15 +57,18 @@ post "/added" do
 	redirect to("/")
 end
 
-post "/save/:doneness" do
-	todos[params[:doneness]] = value
-	status(200)
-	"Success"
-	redirect to("/")
-end
+# post "/save/:doneness" do
+# 	todos[params[:doneness]] = value
+# 	status(200)
+# 	"Success"
+# 	redirect to("/")
+# end
 
 post "/delete/:key" do #can only get params from form names and url
-	delete_task(todos, params[:key])
+	key = params[:key]
+	store.transaction do
+		store.delete(key)
+	end
 	status(200)
 	"Success"
 end

@@ -3,10 +3,11 @@
 <style>
 	h1 {color: red; font-family: 'Lobster Two', cursive; font-size: 100px; margin: 0 0 40px;}
 	p, li {font-family: arial; text-align: left; font-size: 18px; line-height: 25px; list-style-type: none;}
-	.complete {text-decoration: line-through;}
+	/*.complete {text-decoration: line-through;}*/
 	a {text-decoration: none;}
 	#trash {color: red; margin: 0 0 0 25px;}
 	form {margin-bottom: 40px;}
+	.done {text-decoration: line-through;}
 </style>
 </head>
 
@@ -27,7 +28,7 @@
 		<ul>
 			<% @tasks.each do |key, value| %>	<!-- this creates a new li for each in the array -->
 				<li class="item-<%= key %>">	<!-- each li class name based on 'key' variable -->
-					<span class="task-item" onclick="done('<%= key %>')"><%= key %> @ <%=value%></span>
+					<span class="task-item-<%= key %>" onclick="done('<%= key %>')"><%= key %> @ <%=value%></span>
 					<!-- <span class="trash" onclick="d('<%= key %>')">Delete<span> -->
 					<button class="trash" onclick="d('<%= key %>')">Delete</button>
 					<!-- creating a specific done or delete function w/'key' variable parameter -->
@@ -39,12 +40,12 @@
 </div>
 
 
-
+<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
 <script>
 function done(key) {
 	document.querySelectorAll('li.item-' + key + ' span.task-item').item(0).style.textDecoration = "line-through";		//selecting li-class & span-class 
 	var xhr = new XMLHttpRequest();
-	// xhr.open('POST', encodeURI('/save/' + key), true);
+	xhr.open('POST', encodeURI('/save/' + key), true);
 	xhr.send();
 };
 function d(key) {
@@ -55,6 +56,9 @@ function d(key) {
 	xhr.send();		//sends POST request to the server
 }
 
+$('li.item-<%= key %>').on('click', function () {
+	$('span.task-item-<%= key %>').addClass('done');
+});
 
 </script>
 
