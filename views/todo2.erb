@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <head>
 <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
-<style>
-	h1 {color: red; font-family: 'Lobster Two', cursive; font-size: 100px; margin: 0 0 40px;}
-	p, li {font-family: arial; text-align: left; font-size: 18px; line-height: 25px; list-style-type: none;}
-	.complete {text-decoration: line-through; color: red;}
-	.done {display: none;}
-	a {text-decoration: none;}
-	.btn-trash {color: red; margin: 0 0 0 25px;}
-	form {margin-bottom: 40px;}
-</style>
+<link rel="stylesheet" type="text/css" href="todos_style.css">
 </head>
 
 <body>
@@ -27,11 +19,15 @@
 
 	<div style="width: 300px; margin: 0 auto;">
 		<ul>
-			<% @list.each_with_index do |task, index| %>	<!-- this creates a new li for each in the array -->
-				<li class="item-<%= task.task %>">	<!-- each li class name based on 'index' variable -->
-					<span class="task-item-<%= task.task %>" onclick="complete(<%= task %>)"><%= task.task %> @ <%= task.time %></span>
-					<!-- <span class="trash" onclick="d('<%= index %>')">Delete<span> -->
-					<button class="btn-trash" onclick="trash(<%= task.time %>)">Delete</button>
+			<% @list.each_with_index do |task, index| %>
+			<!-- this creates a new li for each in the array -->
+			<!-- task = object in array | index = object's order in array -->
+				<li class="item-<%= index %>">
+				<!-- each li class name based on 'task name' variable -->
+					<span>
+						<span class="task-item-<%= index %>" onclick="complete(<%= index %>)"><%= task.task %> @ <%= task.time %></span>
+					</span>
+					<button class="btn-trash" onclick="trash(<%= index %>)">Delete</button>
 					<!-- creating a specific done or delete function w/'index' variable parameter -->
 				</li>
 			<% end %>
@@ -43,23 +39,7 @@
 
 
 <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
-<script>
-function complete (task) {
-	$('span.task-item-' + task).addClass('complete');
-}
-
-function trash (task) {
-	// alert("helo");
-	$('li.item-' + task).addClass('done');
-	$.post("/delete/" + task);
-		// request.done(function (index) {
-		// 	console.log("Got someting", index);
-		// });
-}
-
-
-</script>
-
+<script src="todos_script.js"></script>
 
 
 

@@ -11,8 +11,8 @@ set :session_secret, "super secret"
 
 
 
- #task.new('buy milk')
- #task.complete?
+#TASK ONLY WORRIES ABOUT CREATING THE TASK
+ 
  class Task
  	attr_reader :task, :time
 	def initialize(task)
@@ -28,7 +28,6 @@ end
 
 
 #YAML ONLY WORRIES ABOUT STORING EACH TASK
-#TASK ONLY WORRIES ABOUT CREATING THE TASK
 
 store = YAML::Store.new ("todo_list.yml")
 store.transaction do
@@ -50,9 +49,9 @@ get "/" do
 end
 
 post "/added" do
-	cat = Task.new(params[:task])
+	new_item = Task.new(params[:task])
 	store.transaction do
-		store[:list].push(cat)
+		store[:list].push(new_item)
 	end
 	redirect to("/")
 end
@@ -64,11 +63,18 @@ end
 # 	redirect to("/")
 # end
 
-post "/delete/:key" do #can only get params from form names and url
-	key = params[:key]
+post "/delete/:index" do
+	#can only get params from form names and url
+	index = params[:index].to_i
 	store.transaction do
-		store.delete(key)
+		store[:list].each_index do |item|
+			if item == index
+				store[:list].delete(store[:list].fetch(item))
+			end
+		end
 	end
+
+	#want to iterate thru yaml store "list" to find the matching index value.
 	status(200)
 	"Success"
 end
