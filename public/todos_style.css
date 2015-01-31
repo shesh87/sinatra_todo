@@ -11,9 +11,11 @@ p, li {
 	line-height: 25px;
 	list-style-type: none;
 }
+.task-item {
+	color: #000;
+}
 .complete {
-	text-decoration:
-	line-through;
+	text-decoration: line-through;
 	color: red;
 }
 .done {

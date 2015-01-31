@@ -1,9 +1,9 @@
 function complete (index) {
-	$('span.task-item-' + index).addClass('complete');
+	$('span.task-item-' + index + '-container').addClass('complete');
+	$.post("/save/")
 }
 
 function trash (index) {
-	// alert("helo");
 	$('li.item-' + index).addClass('done');
 	$.post("/delete/" + index);
 }

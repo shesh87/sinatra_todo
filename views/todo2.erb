@@ -24,8 +24,8 @@
 			<!-- task = object in array | index = object's order in array -->
 				<li class="item-<%= index %>">
 				<!-- each li class name based on 'task name' variable -->
-					<span>
-						<span class="task-item-<%= index %>" onclick="complete(<%= index %>)"><%= task.task %> @ <%= task.time %></span>
+					<span class="task-item-<%= index %>-container">
+						<span class="task-item task-item-<%= index %>" onclick="complete(<%= index %>)"><%= task.task %> @ <%= task.time %></span>
 					</span>
 					<button class="btn-trash" onclick="trash(<%= index %>)">Delete</button>
 					<!-- creating a specific done or delete function w/'index' variable parameter -->

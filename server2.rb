@@ -56,12 +56,17 @@ post "/added" do
 	redirect to("/")
 end
 
-# post "/save/:doneness" do
-# 	todos[params[:doneness]] = value
-# 	status(200)
-# 	"Success"
-# 	redirect to("/")
-# end
+post "/save/:index" do
+	index = params[:index]
+	# binding.pry
+	store.transaction do
+		store[:list].push(task)
+	end
+
+	status(200)
+	"Success"
+	redirect to("/")
+end
 
 post "/delete/:index" do
 	#can only get params from form names and url
