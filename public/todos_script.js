@@ -1,5 +1,5 @@
 function complete (index) {
-	$('span.task-item-' + index + '-container').addClass('complete');
+	$('span.task-item-' + index + '-container').toggleClass('complete');
 	// $.post("/save/")
 }
 

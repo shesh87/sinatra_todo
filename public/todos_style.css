@@ -26,8 +26,110 @@ a {
 }
 .btn-trash {
 	color: red;
-	margin: 0 0 0 25px;
+	margin-right: 25px;
+	float: right;
+	margin-top: 6px;
+}
+.task-item {
+	margin-left: 25px;
 }
 form {
 	margin-bottom: 40px;
 }
+.notepad {
+	margin: 0 auto;
+	float: none !important;
+	background-color: #c1ffc1;
+	padding-bottom: 100px;
+}
+.container {
+	padding: 20px;
+}
+.header {
+	text-align: center;
+}
+.notepad-line {
+	padding-bottom: 34px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 11px;
+}
+.notepad li.notepad-line:first-child {
+	padding-top: 11px;
+}
+.main {
+	text-align: center;
+}
+ul {
+	padding: 0;
+}
+.form-task {
+	float: none !important;
+}
+.form-task .task-name {
+	width: 45%;
+}
+
+
+/*GRID SYSTEM*/
+.col-1 {
+	width: 8.33%;
+	float: left;
+}
+.col-2 {
+	width: 16.66%;
+	float: left;
+}
+.col-3 {
+	width: 25%;
+	float: left;
+}
+.col-4 {
+	width: 58.32%;
+	float: left;
+}
+.col-5 {
+	width: 66.65%;
+	float: left;
+}
+.col-6 {
+	width: 50%;
+	float: left;
+}
+.col-7 {
+	width: 58.33%;
+	float: left;
+}
+.col-8 {
+	width: 66.66%;
+	float: left;
+}
+.col-9 {
+	width: 75%;
+	float: left;
+}
+.col-10 {
+	width: 83.33%;
+	float: left;
+}
+.col-11 {
+	width: 91.66%;
+	float: left;
+}
+.col-12 {
+	width: 100%;
+	float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
