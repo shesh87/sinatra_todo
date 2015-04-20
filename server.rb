@@ -3,6 +3,7 @@ require "pry"
 require "sinatra/reloader" if development?
 require "logger"
 require "pp"
+require 'yaml/store'
 enable :logger
 enable :logger
 enable :sessions
@@ -10,51 +11,75 @@ set :session_secret, "super secret"
 
 
 
-todos = {}
-
- #task.new('buy milk')
- #task.complete?
-#task class should only worry about creating the task & it's status (complete or not)
-class Task
-	def add_task(array, task, time)		
-		array[task] = time
+#TASK ONLY WORRIES ABOUT CREATING THE TASK
+ 
+ class Task
+ 	attr_reader :task, :time
+	def initialize(task)
+		@task = task
+		t = Time.now
+		@time = t.strftime("%l:%M%P")
 	end
-	def complete?(array, task)
+	def complete?(task)
 		
 	end
 
 end
 
 
-#the hash is concerned w/who is inside it and who has been removed/removing them
-def delete_task(array, item)
-	array.delete(item)
+#YAML ONLY WORRIES ABOUT STORING EACH TASK
+
+store = YAML::Store.new ("todo_list.yml")
+store.transaction do
+	store[:list] = [] if store[:list].nil? # Initialize array only if list doesn't exist
 end
+
+
+
+
+
 
 
 
 get "/" do
-	@tasks = todos
+	store.transaction do
+        @list = store[:list]
+    end
 	erb :todo
 end
 
 post "/added" do
-	t = Time.now
-	params[:task] = Task.new
-	params[:task].add_task(todos, params[:task], t.strftime("%l:%M%P"))
+	new_item = Task.new(params[:task])
+	store.transaction do
+		store[:list].push(new_item)
+	end
 	redirect to("/")
 end
 
-post "/save/:key" do
-	# todos[params[:doneness]] = value
-	list.complete?(params[:key])
+post "/save/:index" do
+	index = params[:index]
+	# binding.pry
+	store.transaction do
+		store[:list].push(task)
+	end
+
 	status(200)
 	"Success"
 	redirect to("/")
 end
 
-post "/delete/:key" do #can only get params from form names and url
-	list.delete_task(params[:key])
+post "/delete/:index" do
+	#can only get params from form names and url
+	index = params[:index].to_i
+	store.transaction do
+		store[:list].each_index do |item|
+			if item == index
+				store[:list].delete(store[:list].fetch(item))
+			end
+		end
+	end
+
+	#want to iterate thru yaml store "list" to find the matching index value.
 	status(200)
 	"Success"
 end

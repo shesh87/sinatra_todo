@@ -1,6 +1,6 @@
 function complete (index) {
 	$('span.task-item-' + index + '-container').addClass('complete');
-	$.post("/save/")
+	// $.post("/save/")
 }
 
 function trash (index) {

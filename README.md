@@ -1,9 +1,24 @@
-Sinatra TODO
-Writing a TODO list has become the new "Hello World!" for the web. Use Sinatra to implement one of this applications
+<h1>ToDo List using Sinatra</h1>
 
-Write a small application that allows us to add tasks to a list
-Clicking over a task should mark it as done
-Once done we should be able to delete a task
-The date of creation should be shown together with the task
-If the task contains the word urgent the task will become the most prioritary
-The task list should be saved in a file so we can restart the application and the tasks should persist.
+<hr>
+<h3>About</h3>
+<p>This is a simply ToDo list created with Ruby and the Sinatra framwork.</p>
+<p>The objective are: 
+	<ol>
+		<li>Write a small application that allows a user to add tasks to a list</li>
+		<li>Click a task to mark it as done</li>
+		<li>The ablity to delete a task</li>
+		<li>The date of creation to be shown together with the task</li>
+		<li>The task list saved in a file so if a user refreshes the application the tasks are not lost</li>
+	</ol>
+</p>
+
+
+<hr>
+<h3>How To Use</h3>
+<h2>*Please ignore the files server2.rb and todo2.erb. Those were for testing purposes only.</h2>
+<p></p>
+
+
+
+
