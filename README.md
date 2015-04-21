@@ -1,7 +1,7 @@
 <h1>ToDo List using Sinatra</h1>
 
 <h3>About</h3>
-<p>This is a simply ToDo list created with Ruby and the Sinatra framwork.</p>
+<p>This is a simply ToDo list created with Ruby and the Sinatra framework.</p>
 <p>The objective are: 
 	<ul>
 		<li>Write a small application that allows a user to add tasks to a list</li>

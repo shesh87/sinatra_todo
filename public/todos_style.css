@@ -1,15 +1,20 @@
+body {
+	background-color: #eedeb4;
+}
 h1 {
-	color: red;
+	color: #B2638B;
 	font-family: 'Lobster Two', cursive;
 	font-size: 100px;
 	margin: 0 0 40px;
+	text-shadow: 3px 3px 2px #662F4B;
 }
 p, li {
-	font-family: arial;
+	font-family: helvetica, arial, sans-serif;
 	text-align: left;
 	font-size: 18px;
 	line-height: 25px;
 	list-style-type: none;
+	font-weight: lighter;
 }
 .task-item {
 	color: #000;
@@ -25,7 +30,7 @@ a {
 	text-decoration: none;
 }
 .btn-trash {
-	color: red;
+	color: #B2638B;
 	margin-right: 25px;
 	float: right;
 	margin-top: 6px;
@@ -47,10 +52,11 @@ form {
 }
 .header {
 	text-align: center;
+	margin: 0 0 73px 0;
 }
 .notepad-line {
 	padding-bottom: 34px;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #607F60;
 	margin-bottom: 11px;
 }
 .notepad li.notepad-line:first-child {
@@ -64,9 +70,28 @@ ul {
 }
 .form-task {
 	float: none !important;
+	margin: 0 0 48px 0;
 }
 .form-task .task-name {
 	width: 45%;
+	height: 20px;
+	border-radius: 4px;
+	margin: 0 25px 15px 0;
+}
+.btn-form {
+	width: 100px;
+	height: 25px;
+	vertical-align: top;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	box-shadow: 1px 1px 2px #333;
+	-webkit-box-shadow: 1px 1px 2px #333;
+	-moz-box-shadow: 1px 1px 2px #333;
+	font-size: 14px;
+	/*background-image: linear-gradient(10deg, #87B387, #c1ffc1);*/
 }
 
 
@@ -122,8 +147,31 @@ ul {
 
 
 
-
-
+/*MEDIA QUERY*/
+@media (max-width: 570px) {
+	.container {
+		padding: 10px;
+	}
+	.notepad {
+		width: 100%;
+	}
+	.form-task .task-name {
+  		width: 98%;
+  		height: 22px;
+	}
+	.btn-form {
+		width: 35%;
+	}
+	h1 {
+		font-size: 60px;
+		text-shadow: 2px 2px 1px #662F4B;
+	}
+}
+@media (max-width: 890px) {
+	.notepad {
+		width: 80%;
+	}
+}
 
 
 

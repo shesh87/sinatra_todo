@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1">
+	<title>My To Do List</title>
 	<link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="todos_style.css">
 </head>
@@ -8,7 +11,7 @@
 <body>
 	<div class="container">
 
-		<header class="header"><h1>To Do List</h1></header>
+		<header class="header"><h1> My To Do List</h1></header>
 		
 
 		<main class="main">
@@ -16,7 +19,7 @@
 			<div class="col-12 form-task">
 				<form action="/added" method="POST">
 					<input type="text" name="task" placeholder="Add Task" class="task-name">
-					<input type="submit" value="Add Item">
+					<button type="submit" value="Add Item" class="btn-form">Add Item</button>
 				</form>
 			</div>
 
