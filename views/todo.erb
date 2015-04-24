@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="initial-scale=1">
 	<title>My To Do List</title>
-	<link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="todos_style.css">
 </head>
 
@@ -23,17 +23,21 @@
 				</form>
 			</div>
 
-			<div class="notepad col-8">
+			<div class="notepad none col-8">
 				<ul>
 					<% @list.each_with_index do |task, index| %>
 					<!-- this creates a new li for each in the array -->
 					<!-- task = object in array | index = object's order in array -->
 						<li class="item-<%= index %> notepad-line">
 						<!-- each li class name based on 'task name' variable -->
-							<span class="task-item-<%= index %>-container col-6">
-								<span class="task-item task-item-<%= index %>" onclick="complete(<%= index %>)"><%= task.task %> &mdash; <%= task.time %></span>
-							</span>
-							<span class="col-6"><button class="btn-trash" onclick="trash(<%= index %>)">Delete</button></span>
+							<div class="task-item-<%= index %>-container col-8">
+								<span class="task-item task-item-<%= index %>" onclick="complete(<%= index %>)">
+									<%= task.task %> &mdash; <%= task.time %>
+								</span>
+							</div>
+							<div class="col-4">
+								<button class="btn-trash" onclick="trash(<%= index %>)">Delete</button>
+							</div>
 							<!-- creating a specific done or delete function w/'index' variable parameter -->
 						</li>
 					<% end %>

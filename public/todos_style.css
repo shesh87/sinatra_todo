@@ -16,6 +16,9 @@ p, li {
 	list-style-type: none;
 	font-weight: lighter;
 }
+.none {
+	display: none;
+}
 .task-item {
 	color: #000;
 }
@@ -31,12 +34,8 @@ a {
 }
 .btn-trash {
 	color: #B2638B;
-	margin-right: 25px;
 	float: right;
 	margin-top: 6px;
-}
-.task-item {
-	margin-left: 25px;
 }
 form {
 	margin-bottom: 40px;
@@ -45,10 +44,9 @@ form {
 	margin: 0 auto;
 	float: none !important;
 	background-color: #c1ffc1;
-	padding-bottom: 100px;
 }
 .container {
-	padding: 20px;
+	padding: 5px 20px;
 }
 .header {
 	text-align: center;
@@ -60,13 +58,14 @@ form {
 	margin-bottom: 11px;
 }
 .notepad li.notepad-line:first-child {
-	padding-top: 11px;
+	/*padding-top: 11px;*/
 }
 .main {
 	text-align: center;
 }
 ul {
-	padding: 0;
+	padding: 10px 5px;
+	margin: 0;
 }
 .form-task {
 	float: none !important;
@@ -74,9 +73,10 @@ ul {
 }
 .form-task .task-name {
 	width: 45%;
-	height: 20px;
+	height: 26px;
 	border-radius: 4px;
-	margin: 0 25px 15px 0;
+	margin: 0 20px 15px 0;
+	font-size: 16px;
 }
 .btn-form {
 	width: 100px;
@@ -98,51 +98,49 @@ ul {
 /*GRID SYSTEM*/
 .col-1 {
 	width: 8.33%;
-	float: left;
 }
 .col-2 {
 	width: 16.66%;
-	float: left;
 }
 .col-3 {
 	width: 25%;
-	float: left;
 }
 .col-4 {
-	width: 58.32%;
-	float: left;
+	width: 33.33%;
 }
 .col-5 {
-	width: 66.65%;
-	float: left;
+	width: 41.66%;
 }
 .col-6 {
 	width: 50%;
-	float: left;
 }
 .col-7 {
 	width: 58.33%;
-	float: left;
 }
 .col-8 {
 	width: 66.66%;
-	float: left;
 }
 .col-9 {
 	width: 75%;
-	float: left;
 }
 .col-10 {
 	width: 83.33%;
-	float: left;
 }
 .col-11 {
 	width: 91.66%;
-	float: left;
 }
 .col-12 {
 	width: 100%;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
 	float: left;
+	padding: 0 10px;
+}
+* {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 

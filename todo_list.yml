@@ -2,7 +2,4 @@
 :list:
 - !ruby/object:Task
   task: cheese
-  time: " 6:03pm"
-- !ruby/object:Task
-  task: milk
-  time: " 6:16pm"
+  time: " 1:15pm"
