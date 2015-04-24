@@ -53,23 +53,26 @@ form {
 	margin: 0 0 73px 0;
 }
 .notepad-line {
-	padding-bottom: 34px;
+	padding: 0 10px 30px;
 	border-bottom: 1px solid #607F60;
-	margin-bottom: 11px;
-}
-.notepad li.notepad-line:first-child {
-	/*padding-top: 11px;*/
+	margin-bottom: 15px;
 }
 .main {
 	text-align: center;
 }
 ul {
-	padding: 10px 5px;
+	padding: 10px 5px 3px;
 	margin: 0;
 }
 .form-task {
 	float: none !important;
 	margin: 0 0 48px 0;
+}
+input.col-1 {
+	margin: 7px 0 0;
+}
+li.tasks .col-3 {
+  padding: 0;
 }
 .form-task .task-name {
 	width: 45%;
@@ -146,7 +149,7 @@ ul {
 
 
 /*MEDIA QUERY*/
-@media (max-width: 570px) {
+@media (max-width: 590px) {
 	.container {
 		padding: 10px;
 	}
@@ -161,13 +164,13 @@ ul {
 		width: 35%;
 	}
 	h1 {
-		font-size: 60px;
+		font-size: 80px;
 		text-shadow: 2px 2px 1px #662F4B;
 	}
 }
-@media (max-width: 890px) {
-	.notepad {
-		width: 80%;
+@media (max-width: 465px) {
+	h1 {
+		font-size: 65px;
 	}
 }
 

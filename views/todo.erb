@@ -23,20 +23,22 @@
 				</form>
 			</div>
 
-			<div class="notepad none col-8">
+			<div class="notepad  col-8">
 				<ul>
 					<% @list.each_with_index do |task, index| %>
 					<!-- this creates a new li for each in the array -->
 					<!-- task = object in array | index = object's order in array -->
-						<li class="item-<%= index %> notepad-line">
+						<li class="tasks item-<%= index %> notepad-line">
 						<!-- each li class name based on 'task name' variable -->
-							<div class="task-item-<%= index %>-container col-8">
-								<span class="task-item task-item-<%= index %>" onclick="complete(<%= index %>)">
+							<input class="col-1 js-email" id="js-email-selected" type="checkbox">
+							<div class="col-8 task-item-container">
+								<span class="task-item task-item-<%= index %>">
 									<%= task.task %> &mdash; <%= task.time %>
 								</span>
 							</div>
-							<div class="col-4">
+							<div class="col-3">
 								<button class="btn-trash" onclick="trash(<%= index %>)">Delete</button>
+								<!-- <button class="btn-trash" type="button">Delete</button> -->
 							</div>
 							<!-- creating a specific done or delete function w/'index' variable parameter -->
 						</li>
