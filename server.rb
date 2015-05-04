@@ -4,6 +4,7 @@ require "sinatra/reloader" if development?
 require "logger"
 require "pp"
 require 'yaml/store'
+require 'json'
 enable :logger
 enable :logger
 enable :sessions
@@ -82,7 +83,9 @@ post "/delete/:index" do
 	#want to iterate thru yaml store "list" to find the matching index value.
 	status(200)
 	"Success"
+	redirect to("/")
 end
+
 
 
 
