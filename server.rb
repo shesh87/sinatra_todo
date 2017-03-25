@@ -74,7 +74,7 @@ post "/delete/:index" do
 	index = params[:index].to_i
 	store.transaction do
 		store[:list].each_index do |item|
-			if item == index
+			if item === index
 				store[:list].delete(store[:list].fetch(item))
 			end
 		end
